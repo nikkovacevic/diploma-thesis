@@ -2,8 +2,11 @@ const router = require("express").Router();
 const pool = require("../db");
 const bcrypt = require("bcrypt");
 const jwtGenerator = require("../utils/jwtGenerator");
+const validInfo = require("../middleware/validInfo");
+const authorization = require("../middleware/authorization");
 
-router.post("/register", async (req, res) => {
+//REGISTRACIJA
+router.post("/register", validInfo, async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
@@ -35,7 +38,7 @@ router.post("/register", async (req, res) => {
 });
 
 //LOGIN
-router.post("/login", async (req, res) => {
+router.post("/login", validInfo, async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -59,6 +62,16 @@ router.post("/login", async (req, res) => {
     const token = jwtGenerator(user.rows[0].user_id);
 
     res.json({ token });
+  } catch (error) {
+    console.error(error.message);
+    res.send(500).send("Server error");
+  }
+});
+
+//PREVERJANJE JWT
+router.get("/is-verify", authorization, async (req, res) => {
+  try {
+    res.json(true);
   } catch (error) {
     console.error(error.message);
     res.send(500).send("Server error");
