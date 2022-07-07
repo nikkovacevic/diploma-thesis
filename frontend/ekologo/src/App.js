@@ -11,6 +11,7 @@ import Login from "./components/Login";
 import Home from "./components/Home";
 import Docs from "./components/Docs";
 import Users from "./components/Users";
+import About from "./components/About";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -73,6 +74,17 @@ function App() {
             element={
               isAuthenticated ? (
                 <Users setAuth={setAuth} />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
+          <Route
+            exact
+            path="/about"
+            element={
+              isAuthenticated ? (
+                <About setAuth={setAuth} />
               ) : (
                 <Navigate to="/login" />
               )

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { List, ListItem, ListItemText } from "@mui/material";
+import { List, ListItem, ListItemText, Button } from "@mui/material";
 
 import Navbar from "../components/Navbar";
+import AddDocModal from "../components/AddDocModal";
 
 export default function Docs({ setAuth }) {
   const [countDocs, setCountDocs] = useState(null);
@@ -15,8 +16,6 @@ export default function Docs({ setAuth }) {
       });
 
       const parseRes = await response.json();
-
-      console.log(parseRes);
 
       setDocs(parseRes);
     } catch (err) {
@@ -42,10 +41,30 @@ export default function Docs({ setAuth }) {
     }
   };
 
+  const handleAddNewDoc = async (data) => {
+    try {
+      await fetch("http://localhost:5000/garbage/addDoc", {
+        method: "POST",
+        headers: {
+          token: localStorage.token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      setOpenAddNewModal(false);
+      await getAllDocs();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     getAllDocs();
     countAllDocs();
   }, []);
+
+  const [openAddNewModal, setOpenAddNewModal] = useState(false);
 
   return (
     <div
@@ -59,15 +78,36 @@ export default function Docs({ setAuth }) {
       <Navbar setAuth={setAuth} />
 
       {/* title pa dodaj pa to */}
-      <div></div>
+      <div
+        style={{
+          paddingLeft: "50px",
+          paddingTop: "20px",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <h2 style={{ marginRight: 40 }}>Vsi tehtalni listi</h2>
+        <Button
+          onClick={() => setOpenAddNewModal(true)}
+          style={{
+            height: "fit-content",
+            backgroundColor: "#ef4565",
+            color: "#fffffe",
+            paddingLeft: 16,
+            paddingRight: 16,
+          }}
+        >
+          Dodaj
+        </Button>
+      </div>
 
       {/* list vseh */}
-      <div style={{ padding: "50px" }}>
+      <div
+        style={{ paddingLeft: "50px", paddingRight: "50px", marginTop: "20px" }}
+      >
         <List>
           {docs &&
             docs.map((item, index) => {
-              console.log(new Date(item.gd_date).toLocaleDateString());
-
               return (
                 <ListItem
                   key={index}
@@ -135,6 +175,13 @@ export default function Docs({ setAuth }) {
             })}
         </List>
       </div>
+      <AddDocModal
+        open={openAddNewModal}
+        handleClose={() => setOpenAddNewModal(false)}
+        handleSave={(saveData) => {
+          handleAddNewDoc(saveData);
+        }}
+      />
     </div>
   );
 }

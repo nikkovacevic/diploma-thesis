@@ -5,7 +5,9 @@ import { Paper, Button, TextField } from "@mui/material";
 export default function Navbar({ setAuth }) {
   return (
     <div className="navbarWrapper">
-      <div className="navbarLogo">EKOLOGO</div>
+      <div className="navbarLogo">
+        <h2 style={{ marginTop: 8, marginBottom: 8 }}>EKOLOGO</h2>
+      </div>
       <div className="navbarList">
         <ul>
           <li>

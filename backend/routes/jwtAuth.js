@@ -6,7 +6,7 @@ const validInfo = require("../middleware/validInfo");
 const authorization = require("../middleware/authorization");
 
 //REGISTRACIJA
-router.post("/register", validInfo, async (req, res) => {
+router.post("/register", authorization, async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
@@ -28,9 +28,7 @@ router.post("/register", validInfo, async (req, res) => {
       [name, email, bcryptPassword]
     );
 
-    const token = jwtGenerator(newUser.rows[0].user_id);
-
-    res.json({ token });
+    res.send("Success");
   } catch (error) {
     console.error(error.message);
     res.send(500).send("Server error");

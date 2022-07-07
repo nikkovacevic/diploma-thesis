@@ -12,6 +12,22 @@ router.get("/getAllUsers", authorize, async (req, res) => {
   }
 });
 
+router.get("/getUserbyEmail/:email", authorize, async (req, res) => {
+  try {
+    const email = req.params.email;
+
+    const users = await pool.query(
+      "SELECT user_name FROM users WHERE user_email = $1",
+      [email]
+    );
+
+    res.json(users.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
 router.get("/countAllUsers", authorize, async (req, res) => {
   try {
     const count = await pool.query("SELECT COUNT(*) FROM users");

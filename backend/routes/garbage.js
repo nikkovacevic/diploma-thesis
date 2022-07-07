@@ -38,11 +38,9 @@ router.post("/addDoc", authorize, async (req, res) => {
   try {
     const { type, weight, comment, responsible } = req.body;
 
-    console.log("izvedeno");
-
     const newDoc = await pool.query(
-      `INSERT INTO garbage_documents (gd_date, gd_type, gd_weight, gd_comment, gd_responsible) VALUES (to_timestamp($1), $2, $3, $4, $5)`,
-      [Date.now(), type, weight, comment, responsible]
+      `INSERT INTO garbage_documents (gd_date, gd_type, gd_weight, gd_comment, gd_responsible) VALUES (NOW(), $1, $2, $3, $4)`,
+      [type, weight, comment, responsible]
     );
 
     res.json("Operation successful");
