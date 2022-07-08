@@ -24,12 +24,13 @@ export default function Counter({ count, title, icon }) {
           flexDirection: "column",
           justifyContent: "space-between",
           alignItems: "flex-start",
+          paddingLeft: 4,
         }}
       >
         <div
           style={{
-            fontSize: "24px",
-            marginBottom: 6,
+            fontSize: "36px",
+            marginBottom: 4,
             fontWeight: 600,
             color: "#fffffe",
           }}
@@ -39,7 +40,6 @@ export default function Counter({ count, title, icon }) {
         <div
           style={{
             fontSize: "16px",
-            marginTop: 6,
             fontWeight: 500,
             color: "#fffffe",
           }}

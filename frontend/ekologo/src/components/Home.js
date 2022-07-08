@@ -6,11 +6,14 @@ import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 
 import Navbar from "../components/Navbar";
 import Counter from "../components/Counter";
+import Chart from "../components/Chart";
 
 export default function Home({ setAuth }) {
   const [countUsers, setCountUsers] = useState(null);
   const [countDocs, setCountDocs] = useState(null);
   const [name, setName] = useState("");
+  const [labels, setLabels] = useState([]);
+  const [data, setData] = useState([]);
 
   const countAllUsers = async () => {
     try {
@@ -69,10 +72,30 @@ export default function Home({ setAuth }) {
     }
   };
 
+  const getChartData = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:5000/garbage/getChartData",
+        {
+          method: "GET",
+          headers: { token: localStorage.token },
+        }
+      );
+
+      const parseRes = await response.json();
+
+      setLabels(parseRes && parseRes.map((a) => a.tip));
+      setData(parseRes && parseRes.map((a) => a.sum));
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
   useEffect(() => {
     countAllUsers();
     countAllDocs();
     getUserName();
+    getChartData();
   }, []);
 
   return (
@@ -87,7 +110,14 @@ export default function Home({ setAuth }) {
       <Navbar setAuth={setAuth} />
 
       {/* counteri */}
-      <div style={{ padding: 50, display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          padding: 50,
+          paddingLeft: 75,
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <Counter
           count={countUsers}
           title={"Uporabniki"}
@@ -107,6 +137,8 @@ export default function Home({ setAuth }) {
           Pozdravljeni {name}
         </h1>
       </div>
+
+      <Chart labels={labels && labels} values={data && data} />
     </div>
   );
 }

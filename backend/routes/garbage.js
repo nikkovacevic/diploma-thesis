@@ -50,4 +50,16 @@ router.post("/addDoc", authorize, async (req, res) => {
   }
 });
 
+router.get("/getChartData", authorize, async (req, res) => {
+  try {
+    const data = await pool.query(
+      "SELECT t.gt_type as tip, SUM(d.gd_weight) FROM garbage_types t, garbage_documents d WHERE t.gt_tk_id = d.gd_type GROUP BY t.gt_type"
+    );
+    res.json(data.rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
 module.exports = router;
