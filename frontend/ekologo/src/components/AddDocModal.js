@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
@@ -6,27 +6,24 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import MenuItem from "@mui/material/MenuItem";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import InputLabel from "@mui/material/InputLabel";
+import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 
 export default function AddUserModal({ open, handleClose, handleSave }) {
   const [weight, setWeight] = useState(null);
   const [employee, setEmployee] = useState("");
   const [comment, setComment] = useState("");
-  const [date, setDate] = useState("");
   const [type, setType] = useState("");
 
   const handleSelectChange = (e) => {
     setType(e.target.value);
   };
 
-  const resetForm = () => {
+  const resetForm = useCallback(() => {
     setWeight("");
     setEmployee("");
     setComment("");
-    setDate("");
-  };
+  }, []);
 
   const onClose = () => {
     handleClose();

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Button, List, ListItem, ListItemText, Paper } from "@mui/material";
+import { Button, List, ListItem, ListItemText } from "@mui/material";
 
 import Navbar from "../components/Navbar";
 import AddUserModal from "./AddUserModal";
 
 export default function Users({ setAuth }) {
+  // eslint-disable-next-line
   const [countUsers, setCountUsers] = useState(null);
   const [users, setUsers] = useState([]);
 

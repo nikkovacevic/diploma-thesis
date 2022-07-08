@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import AddDocModal from "../components/AddDocModal";
 
 export default function Docs({ setAuth }) {
+  // eslint-disable-next-line
   const [countDocs, setCountDocs] = useState(null);
   const [docs, setDocs] = useState([]);
 

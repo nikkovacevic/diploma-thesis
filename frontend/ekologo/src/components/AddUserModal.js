@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
@@ -11,11 +11,11 @@ export default function AddUserModal({ open, handleClose, handleSave }) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
-  const resetForm = () => {
+  const resetForm = useCallback(() => {
     setUsername("");
     setPassword("");
     setEmail("");
-  };
+  }, []);
 
   const onClose = () => {
     handleClose();

@@ -1,5 +1,5 @@
 import React from "react";
-import { Paper, Button, TextField } from "@mui/material";
+import { Paper } from "@mui/material";
 
 export default function Counter({ count, title, icon }) {
   return (

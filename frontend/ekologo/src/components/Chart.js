@@ -1,4 +1,6 @@
 import React from "react";
+// eslint-disable-next-line
+import Chart from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 
 export default function MojChart({ labels, values }) {
