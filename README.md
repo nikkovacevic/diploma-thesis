@@ -4,6 +4,8 @@ In modern web development we face an issue that is authentication, which is migr
 
 <img src="screenshots/home1.PNG" width="100%" alt="Home page" />
 
+More screenshots are available in the [screenshots](https://github.com/nikkovacevic/diplomska/blob/main/screenshots/README.md) folder.
+
 ## Purpose
 
 This project was developed as a practical part of my thesis on the JWT Standard. The goal of this project was to build a full-stack application that uses signed JSON Web Tokens to ensure secure access to our web application. 
