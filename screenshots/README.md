@@ -16,5 +16,5 @@
 
 <p>
     <img src="uporabniki1.PNG" width='49%' alt='Users'>
-    <img src="uporabniki2.PNG" width='49%' alt='Adding users'>
+    <img src="uporabnniki2.PNG" width='49%' alt='Adding users'>
 </p>
