@@ -6,7 +6,7 @@ export default function Navbar({ setAuth }) {
   return (
     <div className="navbarWrapper">
       <div className="navbarLogo">
-        <h2 style={{ marginTop: 8, marginBottom: 8 }}>EKOLOGO</h2>
+        <h2 style={{ marginTop: 8, marginBottom: 8 }}>RECIKLIRKO</h2>
       </div>
       <div className="navbarList">
         <ul>

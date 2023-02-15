@@ -38,7 +38,7 @@ export default function AddUserModal({ open, handleClose, handleSave }) {
               marginTop: 24,
             }}
             variant="outlined"
-            label="Uporabnisko ime"
+            label="Uporabniško ime"
             type="text"
             fullWidth
             value={username}
@@ -49,7 +49,7 @@ export default function AddUserModal({ open, handleClose, handleSave }) {
               marginTop: 24,
             }}
             variant="outlined"
-            label="Email"
+            label="E-pošta"
             type="text"
             fullWidth
             value={email}
@@ -69,7 +69,7 @@ export default function AddUserModal({ open, handleClose, handleSave }) {
         </DialogContent>
         <DialogActions>
           <Button onClick={onClose} style={{ color: "#5f6c7b" }}>
-            Preklici
+            Prekliči
           </Button>
 
           <Button

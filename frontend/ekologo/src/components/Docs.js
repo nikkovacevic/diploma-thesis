@@ -148,7 +148,7 @@ export default function Docs({ setAuth }) {
                   {parseInt(item.gd_type) === 4 ? (
                     <ListItemText
                       primary={`${item.gd_weight} kg`}
-                      secondary={"Bioloski"}
+                      secondary={"Biološki"}
                     />
                   ) : (
                     <></>
@@ -156,7 +156,7 @@ export default function Docs({ setAuth }) {
                   {parseInt(item.gd_type) === 5 ? (
                     <ListItemText
                       primary={`${item.gd_weight} kg`}
-                      secondary={"Mesani"}
+                      secondary={"Mešani"}
                     />
                   ) : (
                     <></>

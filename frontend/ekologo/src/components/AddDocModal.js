@@ -47,7 +47,7 @@ export default function AddUserModal({ open, handleClose, handleSave }) {
               width: "45%",
             }}
             variant="outlined"
-            label="Teza v kg"
+            label="Teža v kg"
             type="number"
             value={weight}
             onChange={(e) => setWeight(e.target.value)}
@@ -68,8 +68,8 @@ export default function AddUserModal({ open, handleClose, handleSave }) {
               <MenuItem value={1}>Papir</MenuItem>
               <MenuItem value={2}>Plastika</MenuItem>
               <MenuItem value={3}>Steklo</MenuItem>
-              <MenuItem value={4}>Bioloski</MenuItem>
-              <MenuItem value={5}>Mesani</MenuItem>
+              <MenuItem value={4}>Biološki</MenuItem>
+              <MenuItem value={5}>Mešani</MenuItem>
             </Select>
           </FormControl>
 
@@ -98,7 +98,7 @@ export default function AddUserModal({ open, handleClose, handleSave }) {
         </DialogContent>
         <DialogActions>
           <Button onClick={onClose} style={{ color: "#5f6c7b" }}>
-            Preklici
+            Prekliči
           </Button>
 
           <Button

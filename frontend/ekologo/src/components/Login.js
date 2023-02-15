@@ -71,7 +71,7 @@ export default function Login({ setAuth }) {
             fontSize: "30px",
           }}
         >
-          EKOLOGO
+          RECIKLIRKO
         </div>
         <TextField
           style={{ margin: 8 }}
