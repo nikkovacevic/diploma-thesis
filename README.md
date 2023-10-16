@@ -83,7 +83,7 @@ into your postgres shell of choice to prepare the database.
 
 4. Enter the credentials
 
-- email: nik@mail.com
+- email: nik@gmail.com
 - password: geslonik
 
 ## Thesis 
