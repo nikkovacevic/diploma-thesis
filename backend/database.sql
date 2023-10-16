@@ -8,6 +8,7 @@ CREATE TABLE users(
 );
 
 INSERT INTO users (user_name, user_email, user_password) VALUES ('nik', 'nik@mail.com', 'geslonik');
+INSERT INTO users (user_name, user_email, user_password) VALUES ('nik', 'nik@gmail.com', '$2b$10$xsKNmJGrMSRQXRrQ/FndqOyMwQQkcG9TpZGD9cRO1PUJkGW9Q1PDm');
 
 CREATE TABLE garbage_types(
     gt_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
